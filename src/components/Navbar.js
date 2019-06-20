@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = props => {
   // redirect
@@ -9,7 +9,9 @@ const Navbar = props => {
   return (
     <nav className="nav-wrapper blue darken-3">
       <div className="container">
-        <a className="brand-logo">Todo Times</a>
+        <Link to="/" className="brand-logo">
+          Todo Times
+        </Link>
         <ul className="right">
           <li>
             <Link to="/">Home</Link>
