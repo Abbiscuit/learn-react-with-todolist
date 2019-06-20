@@ -1,19 +1,24 @@
 import React from 'react';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = props => {
+  // redirect
+  // setTimeout(() => {
+  //   props.history.push('/about');
+  // }, 2000);
   return (
     <nav className="nav-wrapper blue darken-3">
       <div className="container">
         <a className="brand-logo">Todo Times</a>
         <ul className="right">
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <NavLink to="/contact">Contact</NavLink>
           </li>
         </ul>
       </div>
@@ -21,4 +26,5 @@ const Navbar = () => {
   );
 };
 
+// export default withRouter(Navbar);
 export default Navbar;
