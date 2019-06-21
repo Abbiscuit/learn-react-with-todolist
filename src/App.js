@@ -5,7 +5,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Post from './components/Post';
 
 class App extends Component {
   state = {
@@ -35,14 +36,18 @@ class App extends Component {
       <Router>
         <div className="todo-app">
           <Navbar />
+
           <div className="container">
             <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
             <AddTodo addTodo={this.addTodo} />
           </div>
         </div>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/:post_id" component={Post} />
+        </Switch>
       </Router>
     );
   }
