@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deletePost } from '../actions/postActions';
+
 class Post extends Component {
   handleClick = () => {
     this.props.deletePost(this.props.post.id);
+    this.props.history.push('/');
   };
   render() {
     console.log(this.props);
@@ -33,10 +36,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deletePost: id => {
-      dispatch({ type: 'DELETE_POST', id: id });
-    }
+    deletePost: id => dispatch(deletePost(id))
   };
 };
 
-export default connect(mapStateToProps)(Post);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Post);
